@@ -7,6 +7,39 @@
     <title>Document</title>
 </head>
 <body>
-    
+        <p>Title</p>
+        <input type="Text" id="Title"></input>
+        
+        <p>ToDo</p>
+        <textArea id="toDo" rows="10" cols="30"></textArea><br>
+        <button onclick='voegtoe()'>Toevoegen</button>
+
+        <p id="lijst">
+
+
+
+        </p>
+
+        <script>
+
+                var lijst = [];
+
+                function voegtoe(){
+
+                    var Titel = document.getElementById('Title').value;
+                    var ToDO = document.getElementById('toDo').value;
+
+                    lijst.push("{title:'" + Titel + "',ToDo:'" + ToDo +"'}");
+
+                    condole.log(lijst);
+                }
+
+                function printlijst(){
+
+                    condole.log(lijst);
+                }
+                
+
+        </script>
 </body>
 </html>
