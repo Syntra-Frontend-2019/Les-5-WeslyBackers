@@ -13,8 +13,9 @@
         <p>ToDo</p>
         <textArea id="toDo" rows="10" cols="30"></textArea><br>
         <button onclick='voegtoe()'>Toevoegen</button>
-
-        <p id="lijst">
+        <hr>
+        <p><strong>TODO</strong></p>
+        <p id="todolijst" style="background-color: bisque"">
 
 
 
@@ -22,21 +23,42 @@
 
         <script>
 
-                var lijst = [];
+                var lijst=[];
+                var printedList = document.getElementById('todolijst');
 
                 function voegtoe(){
 
-                    var Titel = document.getElementById('Title').value;
-                    var ToDO = document.getElementById('toDo').value;
+                    var titel = document.getElementById('Title').value;
+                    var todo = document.getElementById('toDo').value;
+                    
 
-                    lijst.push("{title:'" + Titel + "',ToDo:'" + ToDo +"'}");
+                    lijst.push({'Title':titel,'ToDo':todo});
 
-                    condole.log(lijst);
+                    //todo-lijst in html printen
+                    printlijst();
+                    
+                    //lijst in console checken
+                    printlijst2();
                 }
 
                 function printlijst(){
 
-                    condole.log(lijst);
+                    printedList.innerHTML = "<ul>";
+                   
+                    for (x=0;x<lijst.length;x++){
+
+                        printedList.innerHTML = printedList.innerHTML+"<li><strong>"+lijst[x].Title+":</strong> "+lijst[x].ToDo+"</li>";
+
+                   }
+
+                   printedList.innerHTML = printedList.innerHTML+"</ul>";
+
+                }
+
+                function printlijst2(){
+
+
+                    console.table(lijst);
                 }
                 
 
