@@ -12,19 +12,25 @@
         
         <p>ToDo</p>
         <textArea id="toDo" rows="10" cols="30"></textArea><br>
-        <button onclick='voegtoe()'>Toevoegen</button>
+        <button id="voegtoe">Toevoegen</button>
         <hr>
         <p><strong>TODO</strong></p>
         <p id="todolijst" style="background-color: bisque"">
+            <ul id='mylist'>
 
-
-
+            </ul>
         </p>
 
         <script>
 
                 var lijst=[];
-                var printedList = document.getElementById('todolijst');
+                var button = document.getElementById('voegtoe');
+                var list_ul = document.getElementById('mylist');
+                button.addEventListener("click",voegtoe);
+
+                //var ul = document.querySelector('#ul');
+
+
 
                 function voegtoe(){
 
@@ -43,21 +49,26 @@
 
                 function printlijst(){
 
-                    printedList.innerHTML = "<ul>";
-                   
+                    list_ul.innerHTML = "";
+
                     for (x=0;x<lijst.length;x++){
+    
+                        var strong = document.createElement('strong');
+                        var span = document.createElement('span');
+                        var new_todo = document.createElement('li');
+                        var description = document.createTextNode(" "+lijst[x].ToDo);
 
-                        printedList.innerHTML = printedList.innerHTML+"<li><strong>"+lijst[x].Title+":</strong> "+lijst[x].ToDo+"</li>";
-
+                        strong.innerHTML = lijst[x].Title; 
+                        
+                        list_ul.appendChild(new_todo);
+                        new_todo.appendChild(span);
+                        span.appendChild(strong);
+                        span.appendChild(description);
+                        
                    }
 
-                   printedList.innerHTML = printedList.innerHTML+"</ul>";
-
                 }
-
                 function printlijst2(){
-
-
                     console.table(lijst);
                 }
                 
